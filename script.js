@@ -50,7 +50,7 @@ function displaySpecialGames() {
     .map(
       (game) => `
     <div class="special-game-item" onclick="window.open('${game.link}', '_blank')">
-      <img src="${game.thumb}" alt="${game.name}">
+      <img src="${game.thumb}" alt="${game.name} - Popular HTML5 Game" loading="lazy">
       <div class="special-game-info">
         <div class="special-game-title">${game.name}</div>
         <div class="special-game-description">${game.description}</div>
@@ -110,7 +110,7 @@ function displayGames(games) {
         <div class="game-card">
             <img src="${game.assets.cover}" alt="${
         game.name.en
-      }" class="game-image">
+      } - Free HTML5 Game" class="game-image" loading="lazy">
             <div class="game-info">
                 <h2 class="game-title">${game.name.en}</h2>
                 <p class="game-description">${game.description.en}</p>
@@ -145,4 +145,35 @@ function formatNumber(num) {
 function formatRating(rating) {
   if (!rating) return "N/A";
   return rating.toFixed(1) + "/5";
+}
+
+function createGameCard(game) {
+  const card = document.createElement("div");
+  card.className = "game-card";
+  card.innerHTML = `
+    <img src="${game.thumbnail}" alt="${game.title} - Free HTML5 Game" class="game-image" loading="lazy">
+    <div class="game-info">
+      <h3 class="game-title">${game.title}</h3>
+      <p class="game-description">${game.description}</p>
+      <div class="game-meta">
+        <span class="rating">${game.rating}</span>
+        <span class="plays">${game.plays} plays</span>
+      </div>
+      <a href="${game.url}" class="play-button">Play Now</a>
+    </div>
+  `;
+  return card;
+}
+
+function createSpecialGameItem(game) {
+  const item = document.createElement("div");
+  item.className = "special-game-item";
+  item.innerHTML = `
+    <img src="${game.thumbnail}" alt="${game.title} - Popular HTML5 Game" loading="lazy">
+    <div class="special-game-info">
+      <h4 class="special-game-title">${game.title}</h4>
+      <p class="special-game-description">${game.description}</p>
+    </div>
+  `;
+  return item;
 }
