@@ -1,0 +1,20 @@
+{
+  "name": "html5-games-generator",
+  "version": "1.0.0",
+  "description": "Tool to generate static HTML for HTML5 games website",
+  "main": "generate.js",
+  "scripts": {
+    "generate": "node generate.js",
+    "generate:categories": "node generate-categories.js",
+    "generate:all": "npm run generate && npm run generate:categories",
+    "dev": "nodemon generate.js",
+    "build": "npm run generate:all"
+  },
+  "dependencies": {
+    "node-fetch": "^2.6.1",
+    "sharp": "^0.32.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.22"
+  }
+}
